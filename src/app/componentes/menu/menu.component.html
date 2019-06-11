@@ -1,0 +1,56 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav style="text-align: center" #sidenav
+      #drawer class="sidenav" fixedInViewport="true"
+      role="navigation"
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="!(isHandset$ | async)">
+    <mat-toolbar color="primary">PRESMO</mat-toolbar>
+    
+    <mat-card>
+      <img mat-card-sm-image src="../../../assets/img/medico.png"/>
+      <mat-card-subtitle>Dr. Mario House</mat-card-subtitle>
+      <br><br>
+    </mat-card>
+    
+    <br><br><br>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/home">Inicio</a>
+      <a mat-list-item routerLink="nuevoArt">Articulos</a>
+      <a mat-list-item routerLink="prescripcion">Prescripción</a>
+      <a mat-list-item routerLink="pacientes">Pacientes</a>
+      <a mat-list-item routerLink="">Personal</a>
+      <a mat-list-item routerLink="#">Farmacia</a>
+      <a mat-list-item routerLink="#">Reportes</a>
+      <a mat-list-item routerLink="#">Usuarios</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()">
+        <mat-icon aria-label="Side nav toggle icon">more_vert</mat-icon>
+      </button>
+      <div style="width: 80%"></div>
+      <button
+        type="button"
+        mat-icon-button
+        (click)="drawer.toggle()">
+        <mat-icon style="text-align: right" aria-label="Side nav toggle icon">home</mat-icon>
+      </button>
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()">
+        <mat-icon aria-label="Side nav toggle icon">power_settings_new</mat-icon>
+      </button>
+    </mat-toolbar>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>

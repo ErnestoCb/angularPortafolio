@@ -1,0 +1,41 @@
+<div fxLayout="row" fxLayoutAlign="center center" class="login-main">
+  <mat-card>
+    <mat-card-content fxLayout="column">
+      <img class=logo src="../../../assets/img/Logo.png" alt="logo">
+    </mat-card-content>
+    <mat-card-content fxLayout="column">
+      <mat-card-title>Bienvenido</mat-card-title>
+    </mat-card-content>
+    <mat-card-content fxLayout="column">
+      <mat-form-field>
+        <input type="email" matInput #userName required placeholder="Correo electronico">
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-content fxLayout="column">
+      <mat-form-field>
+        <input type="password" #userPassword required matInput placeholder="Contraseña">
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-content fxLayout="column">
+        <mat-checkbox>Recordar usuario</mat-checkbox>
+        <button routerLink="/recuperar" mat-button>Olvide mi contraseña</button>
+      </mat-card-content>
+    <mat-card-actions align="center">
+      <button style="width: 60%" mat-raised-button value="Log in"  color="primary">Ingresar</button>
+    </mat-card-actions>
+    <mat-card-actions align="center">
+      <button mat-icon-button>
+        <i class="fab fa-facebook-f fa-2x"></i>
+      </button>
+      <button mat-icon-button>
+        <i class="far fa-envelope fa-2x"></i>
+      </button>
+      <button mat-icon-button>
+        <i class="fab fa-instagram fa-2x"></i>
+      </button>
+      <button mat-icon-button>
+        <i class="fab fa-github-alt fa-2x"></i>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
