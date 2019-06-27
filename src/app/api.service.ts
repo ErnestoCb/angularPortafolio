@@ -8,7 +8,7 @@ import { Articulo } from './clases/articulo';
   providedIn: 'root'
 })
 export class ApiService {
-  endpoint: string ='http://localhost:8080/api/v1/';
+  endpoint: string ='http://localhost:8080/articulos/';
 
   headers: HttpHeaders;
   

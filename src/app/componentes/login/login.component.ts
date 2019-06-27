@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   }
 
   logear(){
-    this.loginService.getLogin().subscribe((data:any) =>{
+    this.loginService.getLogin().subscribe((data:any[]) =>{
       console.log(data);
     })
   }

@@ -8,7 +8,7 @@ import { map, catchError, tap } from 'rxjs/operators';
 })
 export class LoginService {
 
-  endpoint: string ='http://localhost:8080/oauth/token';
+  endpoint: string ='http://localhost:8080/login/usuario/';
 
   headers: HttpHeaders;
   
@@ -33,8 +33,7 @@ export class LoginService {
   constructor(private httpClient: HttpClient) { }
 
   getLogin(): Observable<any> {
-    return this.httpClient.post(this.endpoint + '?username=' + 'frank666' + 
-    '&password=' + '12345' +  '&grant_type=password', {headers:this.httpOptions}).pipe(
+    return this.httpClient.get(this.endpoint + '?usuario=desarrollo&password=desarrollo').pipe(
       map(this.extractData));
   }
 }
