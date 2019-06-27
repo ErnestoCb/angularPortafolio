@@ -11,7 +11,8 @@ import { InicioComponent } from './componentes/inicio/inicio.component';
 import { InsertArticulosComponent } from './componentes/insert-articulos/insert-articulos.component';
 import { CaducarArticuloComponent } from './componentes/caducar-articulo/caducar-articulo.component';
 import { PrescripcionComponent } from './componentes/prescripcion/prescripcion.component';
-
+import { UsuariosMedicoComponent } from './componentes/usuarios-medico/usuarios-medico.component';
+import { UsuariosFarmaceuticoComponent } from './componentes/usuarios-farmaceutico/usuarios-farmaceutico.component';
 
 
 const routes: Routes = [
@@ -29,6 +30,8 @@ const routes: Routes = [
       { path: 'nuevoArt', component: InsertArticulosComponent },
       { path: 'caducar', component: CaducarArticuloComponent },
       { path: 'prescripcion', component: PrescripcionComponent },
+      { path: 'usuarioMedico', component: UsuariosMedicoComponent },
+      { path: 'usuarioFarma', component: UsuariosFarmaceuticoComponent },
     ]
 
   },

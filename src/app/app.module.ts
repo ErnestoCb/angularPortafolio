@@ -24,6 +24,8 @@ import { InsertArticulosComponent } from './componentes/insert-articulos/insert-
 import { HttpClientModule } from '@angular/common/http';
 import { CaducarArticuloComponent } from './componentes/caducar-articulo/caducar-articulo.component';
 import { PrescripcionComponent } from './componentes/prescripcion/prescripcion.component';
+import { UsuariosMedicoComponent } from './componentes/usuarios-medico/usuarios-medico.component';
+import { UsuariosFarmaceuticoComponent } from './componentes/usuarios-farmaceutico/usuarios-farmaceutico.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { PrescripcionComponent } from './componentes/prescripcion/prescripcion.c
     LoginLayoutComponent,
     InsertArticulosComponent,
     CaducarArticuloComponent,
-    PrescripcionComponent
+    PrescripcionComponent,
+    UsuariosMedicoComponent,
+    UsuariosFarmaceuticoComponent
   ],
   imports: [
     BrowserModule,
