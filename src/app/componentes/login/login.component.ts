@@ -21,8 +21,8 @@ export class LoginComponent implements OnInit {
   
   httpOptions2 = {
     headers: new HttpHeaders({
-      'Content-Type':  'application/json',
-      'Authorization': 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGVsbGlkb3MiOiJib3lzIiwiaW5mbyBhZGljaW9uYWwiOiJIb2xhIHF1ZSB0YWwhc3VpY2lkZWJveSIsInVzZXJfbmFtZSI6InN1aWNpZGVib3kiLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiXSwiZXhwIjoxNTYxOTQ2ODU4LCJub21icmUiOiJzdWljaWRlIiwianRpIjoiNWIwNTE1MTAtMzM4YS00MjlkLWExYzYtZWU5OTA3ODM4OTBiIiwiZW1haWwiOiJzLmJveXM2NjZAZ21haWwuY29tIiwiY2xpZW50X2lkIjoiYW5ndWxhckFwcCJ9.M9Fwej9xThQN8---ANzxfFS9QJvBi4QEJxhYaYo92hRLe6S8rc8evuET4MGo0ENZqX0qTXJZji8uwPG0igthX3vnnZcHqIuvdLW7hwmkbpA8uo6zHWrtu-5TpsfbbdS4AV8EuARvLh2Ww2t3rHVW6xRukMmRw4H_FyZu_AqHqY_zns6MXIb1CxU3gupaubFtF02Htm8cA2NkaI7k814Perg2O_qT1WWRNW72LfCQUzPRY7mc4z5UjihSnTuUMVLcufgay8dYja524qcI1yJTtc8Zjo3RMVa96H_6NIIde9mso_CXrFLcXQQEbi7Elz9YwzUNndOUT6aXlXVIANOavw'
+      'Content-Type':  'application/x-www-form-urlencoded',
+      'Authorization': '"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGVsbGlkb3MiOiJib3lzIiwiaW5mbyBhZGljaW9uYWwiOiJIb2xhIHF1ZSB0YWwhc3VpY2lkZWJveSIsInVzZXJfbmFtZSI6InN1aWNpZGVib3kiLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiXSwiZXhwIjoxNTYyMDc4NjYxLCJub21icmUiOiJzdWljaWRlIiwianRpIjoiNWQxMTAzNGItZGJkOC00N2M0LWI3NjYtNjgwMDcxYTBlM2YxIiwiZW1haWwiOiJzLmJveXM2NjZAZ21haWwuY29tIiwiY2xpZW50X2lkIjoiYW5ndWxhckFwcCJ9.v0WDT6FaAQqTz0zEB9r_ol4enURn0mCL0Bw2cdRgz6xPsCq_wIH5LZ15gdF8GmvsHqwX50r1ZTWMsZmNdRbvLgoaQCnk1dK2wZr80TBQ_Nw858PmKRac3zkpBC_lDdnXZLXcVDDndDfe32p9jfcnX0JSli_kYeCcLEhuUObuYtDwR0CODHnWrzxUJJrky6YA914ZHEAersfu02fQclWJA6UQDUTVXb6FwgZtErjHc4JZ_9fcc1j7zKYb6esN2c7REBoPKE5wMSDTVSgeHqSgafl8apGoMaaSvt0EDTEsV74cIwZ2oDUgCgWCmRSVBHOlfs1xpuWvCys3Wsmh7BwmPQ'
     })
   };
 
@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     //this.login();
-    //this.previsiones();
+    this.previsiones();
   }
 
   logear(usuario: string, pass: string):Observable<any>{
