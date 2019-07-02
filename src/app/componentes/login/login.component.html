@@ -8,12 +8,12 @@
     </mat-card-content>
     <mat-card-content fxLayout="column">
       <mat-form-field>
-        <input type="email" matInput #userName required placeholder="Correo electronico">
+        <input type="text" matInput #userName required placeholder="Username" autofocus [(ngModel)]="usuario">
       </mat-form-field>
     </mat-card-content>
     <mat-card-content fxLayout="column">
       <mat-form-field>
-        <input type="password" #userPassword required matInput placeholder="Contraseña">
+        <input type="password" #userPassword required matInput [(ngModel)]="pass" placeholder="Contraseña">
       </mat-form-field>
     </mat-card-content>
     <mat-card-content fxLayout="column">
@@ -21,7 +21,7 @@
         <button routerLink="/recuperar" mat-button>Olvide mi contraseña</button>
       </mat-card-content>
     <mat-card-actions align="center">
-      <button style="width: 60%" mat-raised-button value="Log in"  color="primary">Ingresar</button>
+      <button style="width: 60%" mat-raised-button value="Log in" (click)="login(this.usuario, this.pass)"  color="primary">Ingresar</button>
     </mat-card-actions>
     <mat-card-actions align="center">
       <button mat-icon-button>
