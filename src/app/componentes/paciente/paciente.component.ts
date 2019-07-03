@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { SelectsService } from '../../servicios/selects.service'
 
 @Component({
   selector: 'app-paciente',
@@ -21,9 +22,14 @@ export class PacienteComponent implements OnInit {
         this.email.hasError('email') ? 'Correo invalido' :
             '';
   }
-  constructor() { }
+  constructor(private selects: SelectsService) { }
 
   ngOnInit() {
+    let data:any = this.selects.previData();
+    console.log(data);
   }
+
+
+
 
 }

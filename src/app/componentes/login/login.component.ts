@@ -17,20 +17,9 @@ export class LoginComponent implements OnInit {
   private _usuario: any;
   private _token: string;
 
-  urlProvisiones: string = 'localhost:8080/api/v1/pacientes/previsiones';
-  
-  httpOptions2 = {
-    headers: new HttpHeaders({
-      'Content-Type':  'application/x-www-form-urlencoded',
-      'Authorization': '"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGVsbGlkb3MiOiJib3lzIiwiaW5mbyBhZGljaW9uYWwiOiJIb2xhIHF1ZSB0YWwhc3VpY2lkZWJveSIsInVzZXJfbmFtZSI6InN1aWNpZGVib3kiLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiXSwiZXhwIjoxNTYyMDc4NjYxLCJub21icmUiOiJzdWljaWRlIiwianRpIjoiNWQxMTAzNGItZGJkOC00N2M0LWI3NjYtNjgwMDcxYTBlM2YxIiwiZW1haWwiOiJzLmJveXM2NjZAZ21haWwuY29tIiwiY2xpZW50X2lkIjoiYW5ndWxhckFwcCJ9.v0WDT6FaAQqTz0zEB9r_ol4enURn0mCL0Bw2cdRgz6xPsCq_wIH5LZ15gdF8GmvsHqwX50r1ZTWMsZmNdRbvLgoaQCnk1dK2wZr80TBQ_Nw858PmKRac3zkpBC_lDdnXZLXcVDDndDfe32p9jfcnX0JSli_kYeCcLEhuUObuYtDwR0CODHnWrzxUJJrky6YA914ZHEAersfu02fQclWJA6UQDUTVXb6FwgZtErjHc4JZ_9fcc1j7zKYb6esN2c7REBoPKE5wMSDTVSgeHqSgafl8apGoMaaSvt0EDTEsV74cIwZ2oDUgCgWCmRSVBHOlfs1xpuWvCys3Wsmh7BwmPQ'
-    })
-  };
-
   constructor(private httpClient: HttpClient, public router: Router) { }
 
   ngOnInit() {
-    //this.login();
-    this.previsiones();
   }
 
   logear(usuario: string, pass: string):Observable<any>{
@@ -102,12 +91,6 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['home/inicio']);
     });
 
-  }
-
-  previsiones(){
-    this.httpClient.get(this.urlProvisiones,this.httpOptions2).subscribe((data)=>{
-      console.log(data);
-    })
   }
 
   clean(){
