@@ -14,10 +14,10 @@ import { RouterLink, Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   usuario: string = "suicideboy";
   pass: string = "12345";
-
+  private _usuario: any;
+  private _token: string;
 
   urlProvisiones: string = 'localhost:8080/api/v1/pacientes/previsiones';
-
   
   httpOptions2 = {
     headers: new HttpHeaders({
@@ -73,12 +73,32 @@ export class LoginComponent implements OnInit {
     );
   }
 
+  guardarUsuario(accessToken: string):void{
+    let datos = this.getTokenData(accessToken);
+    this._usuario = datos;
+    sessionStorage.setItem('usuario', JSON.stringify(this._usuario));
+  }
+
+  guardarToken(accessToken: string):void{
+    this._token = accessToken;
+    sessionStorage.setItem('token', accessToken)
+  }
+
+  getTokenData(token: string):any{
+    if(token != null){
+      return JSON.parse(atob(token.split(".")[1]));
+    }
+    return null;      
+  }
+
   login(usuario: string, pass: string): void{
     
     this.logear(usuario, pass).subscribe(data => {
       console.log(data);
-      let datosUsuario = JSON.parse(atob(data.access_token.split(".")[1]));
-      console.log(datosUsuario);
+
+      this.guardarUsuario(data.access_token);
+      this.guardarToken(data.access_token);
+
       this.router.navigate(['home/inicio']);
     });
 
