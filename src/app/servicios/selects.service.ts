@@ -13,15 +13,10 @@ export class SelectsService {
 
 
 
-  public previData():any {
-    this.previsiones().subscribe(data =>{
-      this._datosPrevision = data;
-      return this._datosPrevision;
-    })
-  }
 
-  previsiones():Observable<any>{
-    const urlProvisiones: string = 'http://localhost:8080/api/v1/pacientes/previsiones';
+
+  webService(url:string):Observable<any>{
+    const urlLoco: string = 'http://localhost:8080/api/v1/pacientes/' + url;
   
     const httpOptions2 = {
       headers: new HttpHeaders({
@@ -30,6 +25,8 @@ export class SelectsService {
       })
     };
 
-    return this.httpClient.get(urlProvisiones,httpOptions2);
+    return this.httpClient.get(urlLoco,httpOptions2);
   }
+
+  
 }

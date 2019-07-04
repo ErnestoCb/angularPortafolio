@@ -30,7 +30,12 @@
       <input matInput placeholder="Rut" required>
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Carnet" required>
+      <mat-label>Carnet</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let dato of carnet" [value]="dato.id">
+          {{dato.nombre}}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
   </mat-card-content>
   <mat-card-content>
@@ -52,42 +57,42 @@
     <mat-form-field>
       <mat-label>Region</mat-label>
       <mat-select>
-        <mat-option *ngFor="let sexo of sexos" [value]="sexo.value">
-          {{sexo.sexo}}
+        <mat-option *ngFor="let data of regiones" [value]="data.id">
+          {{data.nombre}}
         </mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Comuna</mat-label>
       <mat-select>
-        <mat-option *ngFor="let sexo of sexos" [value]="sexo.value">
-          {{sexo.sexo}}
+        <mat-option *ngFor="let data of comunas" [value]="data.id">
+          {{data.nombre}}
         </mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field>
-      <mat-label>Prevision</mat-label>
+      <mat-label>Nacionalidad</mat-label>
       <mat-select>
-        <mat-option *ngFor="let sexo of sexos" [value]="sexo.value">
-          {{sexo.sexo}}
+        <mat-option *ngFor="let data of nacionalidades" [value]="data.id">
+          {{data.pais}}
         </mat-option>
       </mat-select>
     </mat-form-field>
   </mat-card-content>
   <mat-card-content>
     <mat-form-field>
-      <mat-label>Nacionalidad</mat-label>
+      <mat-label>Prevision</mat-label>
       <mat-select>
-        <mat-option *ngFor="let sexo of sexos" [value]="sexo.value">
-          {{sexo.sexo}}
+        <mat-option *ngFor="let data of previsiones" [value]="data.id">
+          {{data.nombre}}
         </mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Sexo</mat-label>
       <mat-select>
-        <mat-option *ngFor="let sexo of sexos" [value]="sexo.value">
-          {{sexo.sexo}}
+        <mat-option *ngFor="let data of sexos" [value]="data.id">
+          {{data.nombre}}
         </mat-option>
       </mat-select>
     </mat-form-field>

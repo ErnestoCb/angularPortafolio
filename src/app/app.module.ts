@@ -27,6 +27,8 @@ import { PrescripcionComponent } from './componentes/prescripcion/prescripcion.c
 import { UsuariosMedicoComponent } from './componentes/usuarios-medico/usuarios-medico.component';
 import { UsuariosFarmaceuticoComponent } from './componentes/usuarios-farmaceutico/usuarios-farmaceutico.component';
 
+import { SelectsService } from '../app/servicios/selects.service'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,7 +68,7 @@ import { UsuariosFarmaceuticoComponent } from './componentes/usuarios-farmaceuti
     MatDatepickerModule,
     MatNativeDateModule
   ],
-  providers: [],
+  providers: [SelectsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

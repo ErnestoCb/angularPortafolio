@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { SelectsService } from '../../servicios/selects.service'
+import { Observable } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
+import { SesionStoreService } from '../../servicios/sesion-store.service';
+import { SelectsService } from '../../servicios/selects.service';
 
 @Component({
   selector: 'app-paciente',
@@ -8,12 +12,12 @@ import { SelectsService } from '../../servicios/selects.service'
   styleUrls: ['./paciente.component.css']
 })
 export class PacienteComponent implements OnInit {
-
-  sexos: any = [
-    {value: 1, sexo: "Masculino"},
-    {value: 2, sexo: "Femenino"},
-    {value: 3, sexo: "Otro"}
-  ];
+  previsiones = [];
+  sexos = [];
+  carnet = [];
+  regiones = [];
+  comunas = [];
+  nacionalidades = [];
   
   email = new FormControl('', [Validators.required, Validators.email]);
 
@@ -22,12 +26,57 @@ export class PacienteComponent implements OnInit {
         this.email.hasError('email') ? 'Correo invalido' :
             '';
   }
-  constructor(private selects: SelectsService) { }
-
+  constructor(private sessionstore: SesionStoreService, private httpClient: HttpClient, private selects: SelectsService) { }
+  
   ngOnInit() {
-    let data:any = this.selects.previData();
-    console.log(data);
+    this.traigoLosSelectsQLOS();
+    setTimeout(() => {
+      console.log(this.nacionalidades);
+    }, 500);
+    /*
+    setTimeout(() => {
+      console.log(this.datitos);
+    }, 500);
+    */
   }
+
+  traigoLosSelectsQLOS() {
+    this.selects.webService('previsiones').toPromise().then(data =>{ 
+      data.forEach(element => {
+        this.previsiones.push(element);
+      });
+    });
+    this.selects.webService('sexos').toPromise().then(data =>{ 
+      data.forEach(element => {
+        this.sexos.push(element);
+      });
+    });
+    this.selects.webService('carnets').toPromise().then(data =>{ 
+      data.forEach(element => {
+        this.carnet.push(element);
+      });
+    });
+    this.selects.webService('regiones').toPromise().then(data =>{ 
+      data.forEach(element => {
+        this.regiones.push(element);
+      });
+    });
+    this.selects.webService('comunas').toPromise().then(data =>{ 
+      data.forEach(element => {
+        this.comunas.push(element);
+      });
+    });
+    this.selects.webService('nacionalidades').toPromise().then(data =>{ 
+      data.forEach(element => {
+        this.nacionalidades.push(element);
+      });
+    });
+
+
+
+
+  }
+
 
 
 
