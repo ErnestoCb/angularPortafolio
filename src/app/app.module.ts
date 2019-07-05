@@ -11,7 +11,7 @@ import { PacienteComponent } from './componentes/paciente/paciente.component';
 import { PerfilComponent } from './componentes/perfil/perfil.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule, MatNativeDateModule, MatDatepickerModule, MatCheckboxModule, MatCardModule,MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatTableModule } from '@angular/material';
+import { MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule, MatNativeDateModule, MatDatepickerModule, MatCheckboxModule, MatCardModule,MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatTableModule, MAT_DATE_LOCALE } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 
 //angular material y las opciones de form para los mismo
@@ -68,7 +68,8 @@ import { SelectsService } from '../app/servicios/selects.service'
     MatDatepickerModule,
     MatNativeDateModule
   ],
-  providers: [SelectsService],
+  providers: [SelectsService,
+    {provide: MAT_DATE_LOCALE, useValue: 'en-GB'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

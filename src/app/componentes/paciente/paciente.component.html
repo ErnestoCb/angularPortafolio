@@ -31,7 +31,7 @@
     </mat-form-field>
     <mat-form-field>
       <mat-label>Carnet</mat-label>
-      <mat-select>
+      <mat-select [(ngModel)]="carn">
         <mat-option *ngFor="let dato of carnet" [value]="dato.id">
           {{dato.nombre}}
         </mat-option>
@@ -56,7 +56,7 @@
     <mat-card-subtitle>Datos adicionales</mat-card-subtitle>
     <mat-form-field>
       <mat-label>Region</mat-label>
-      <mat-select>
+      <mat-select [(ngModel)]="region">
         <mat-option *ngFor="let data of regiones" [value]="data.id">
           {{data.nombre}}
         </mat-option>
@@ -64,7 +64,7 @@
     </mat-form-field>
     <mat-form-field>
       <mat-label>Comuna</mat-label>
-      <mat-select>
+      <mat-select [(ngModel)]="comuna">
         <mat-option *ngFor="let data of comunas" [value]="data.id">
           {{data.nombre}}
         </mat-option>
@@ -72,7 +72,7 @@
     </mat-form-field>
     <mat-form-field>
       <mat-label>Nacionalidad</mat-label>
-      <mat-select>
+      <mat-select [(ngModel)]="nacionalidad">
         <mat-option *ngFor="let data of nacionalidades" [value]="data.id">
           {{data.pais}}
         </mat-option>
@@ -82,7 +82,7 @@
   <mat-card-content>
     <mat-form-field>
       <mat-label>Prevision</mat-label>
-      <mat-select>
+      <mat-select [(ngModel)]="prevision">
         <mat-option *ngFor="let data of previsiones" [value]="data.id">
           {{data.nombre}}
         </mat-option>
@@ -90,14 +90,14 @@
     </mat-form-field>
     <mat-form-field>
       <mat-label>Sexo</mat-label>
-      <mat-select>
+      <mat-select [(ngModel)]="sexo">
         <mat-option *ngFor="let data of sexos" [value]="data.id">
           {{data.nombre}}
         </mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field>
-      <input matInput [matDatepicker]="picker" placeholder="Fecha de Nacimiento">
+      <input matInput [matDatepicker]="picker" placeholder="Fecha de Nacimiento" [formControl]="date">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
@@ -106,7 +106,7 @@
   <br><br>
   
   <mat-card-actions>
-      <button mat-raised-button color="warn">Agregar Nuevo Paciente</button>
+      <button mat-raised-button (click)="test()" color="warn">Agregar Nuevo Paciente</button>
   </mat-card-actions>
   
 

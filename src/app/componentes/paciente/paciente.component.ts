@@ -18,6 +18,15 @@ export class PacienteComponent implements OnInit {
   regiones = [];
   comunas = [];
   nacionalidades = [];
+  //valores escogidos
+  nacionalidad: number = 39;
+  region: number = 7;
+  comuna: number = 20;
+  sexo:number;
+  prevision:number;
+  carn:number;
+
+  date = new FormControl(new Date());
   
   email = new FormControl('', [Validators.required, Validators.email]);
 
@@ -39,6 +48,15 @@ export class PacienteComponent implements OnInit {
     }, 500);
     */
   }
+
+  test(){
+    console.log(this.date.value);
+  }
+
+
+
+
+
 
   traigoLosSelectsQLOS() {
     this.selects.webService('previsiones').toPromise().then(data =>{ 
