@@ -1,22 +1,29 @@
-<div style="padding: 1em">
+
 
 
 <mat-toolbar style="width: 100%">
     <button mat-button
     routerLink="/home/nuevoArt">
-    Nuevo
+    Nuevo Articulo
     </button>
   <button mat-button
     color='warn'
     routerLink="/home/articulos">
-    Lista
+    Articulos disponibles
   </button>
   <button mat-button>
-    Caducar
+    Caducar Articulo
+  </button>
+  <button mat-button
+  routerLink="/home/nuevaPartida">
+    Ingregar Partida
+  </button>
+  <button mat-button>
+    Listar Partidas
   </button>
 </mat-toolbar>
 
-
+<div style="padding: 1em">
 
 <h2>ARTICULOS List</h2>
 
@@ -29,12 +36,6 @@
   <!--- Note that these columns can be defined in any order.
         The actual rendered columns are set as a property on the row definition" -->
 
-  <!-- Position Column -->
-  <ng-container matColumnDef="id">
-    <th mat-header-cell *matHeaderCellDef> Id </th>
-    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-  </ng-container>
-
   <!-- Name Column -->
   <ng-container matColumnDef="descripcion">
     <th mat-header-cell *matHeaderCellDef> Descripcion </th>
@@ -43,12 +44,12 @@
 
   <ng-container matColumnDef="id_tipo">
     <th mat-header-cell *matHeaderCellDef> Tipo </th>
-    <td mat-cell *matCellDef="let element"> {{element.idTipo}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.tipo.nombre}} </td>
   </ng-container>
 
   <ng-container matColumnDef="id_fabricante">
     <th mat-header-cell *matHeaderCellDef> Fabricante </th>
-    <td mat-cell *matCellDef="let element"> {{element.idFabricante}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.fabricante.nombre}} </td>
   </ng-container>
 
   <ng-container matColumnDef="componentes">

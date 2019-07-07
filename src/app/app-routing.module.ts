@@ -13,6 +13,8 @@ import { CaducarArticuloComponent } from './componentes/caducar-articulo/caducar
 import { PrescripcionComponent } from './componentes/prescripcion/prescripcion.component';
 import { UsuariosMedicoComponent } from './componentes/usuarios-medico/usuarios-medico.component';
 import { UsuariosFarmaceuticoComponent } from './componentes/usuarios-farmaceutico/usuarios-farmaceutico.component';
+import { DatosPacienteComponent } from './componentes/datos-paciente/datos-paciente.component';
+import { NuevaPartidaComponent } from './componentes/nueva-partida/nueva-partida.component';
 
 
 const routes: Routes = [
@@ -26,8 +28,10 @@ const routes: Routes = [
     children: [
       { path: 'articulos', component: ArticulosComponent},
       { path: 'pacientes', component: PacienteComponent},
+      { path: 'datospaciente', component: DatosPacienteComponent},
       { path: 'inicio', component: InicioComponent},
       { path: 'nuevoArt', component: InsertArticulosComponent },
+      { path: 'nuevaPartida', component: NuevaPartidaComponent },
       { path: 'caducar', component: CaducarArticuloComponent },
       { path: 'prescripcion', component: PrescripcionComponent },
       { path: 'usuarioMedico', component: UsuariosMedicoComponent },

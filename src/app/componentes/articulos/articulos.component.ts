@@ -9,7 +9,7 @@ import { ApiService } from '../../api.service';
 export class ArticulosComponent implements OnInit {
 
   articulos: any[];
-  displayedColumns: string[] = ['id', 'id_tipo', 'id_fabricante', 'descripcion', 'componentes', 'contenido', 'gramaje', 'stock'];
+  displayedColumns: string[] = ['descripcion', 'id_tipo', 'id_fabricante', 'componentes', 'contenido', 'gramaje', 'stock'];
 
   constructor(private apiService: ApiService) { }
 

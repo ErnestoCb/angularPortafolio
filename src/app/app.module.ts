@@ -11,7 +11,7 @@ import { PacienteComponent } from './componentes/paciente/paciente.component';
 import { PerfilComponent } from './componentes/perfil/perfil.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule, MatNativeDateModule, MatDatepickerModule, MatCheckboxModule, MatCardModule,MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatTableModule, MAT_DATE_LOCALE } from '@angular/material';
+import { MatFormFieldModule, MatSnackBarModule, MatInputModule, MatOptionModule, MatSelectModule, MatNativeDateModule, MatDatepickerModule, MatCheckboxModule, MatCardModule,MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatTableModule, MAT_DATE_LOCALE } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 
 //angular material y las opciones de form para los mismo
@@ -27,7 +27,12 @@ import { PrescripcionComponent } from './componentes/prescripcion/prescripcion.c
 import { UsuariosMedicoComponent } from './componentes/usuarios-medico/usuarios-medico.component';
 import { UsuariosFarmaceuticoComponent } from './componentes/usuarios-farmaceutico/usuarios-farmaceutico.component';
 
-import { SelectsService } from '../app/servicios/selects.service'
+import { SelectsService } from '../app/servicios/selects.service';
+import { DatosPacienteComponent } from './componentes/datos-paciente/datos-paciente.component';
+import { NuevaPartidaComponent } from './componentes/nueva-partida/nueva-partida.component'
+
+//cambiar las fechas
+import { DatePipe } from '@angular/common'
 
 @NgModule({
   declarations: [
@@ -44,7 +49,9 @@ import { SelectsService } from '../app/servicios/selects.service'
     CaducarArticuloComponent,
     PrescripcionComponent,
     UsuariosMedicoComponent,
-    UsuariosFarmaceuticoComponent
+    UsuariosFarmaceuticoComponent,
+    DatosPacienteComponent,
+    NuevaPartidaComponent
   ],
   imports: [
     BrowserModule,
@@ -66,10 +73,12 @@ import { SelectsService } from '../app/servicios/selects.service'
     MatSelectModule,
     MatOptionModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSnackBarModule
   ],
   providers: [SelectsService,
-    {provide: MAT_DATE_LOCALE, useValue: 'en-GB'}],
+    {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},
+    DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

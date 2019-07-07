@@ -1,0 +1,59 @@
+<mat-toolbar style="width: 100%">
+    <button mat-button
+    routerLink="/home/nuevoArt">
+    Nuevo Articulo
+    </button>
+  <button mat-button
+    routerLink="/home/articulos">
+    Articulos disponibles
+  </button>
+  <button mat-button>
+    Caducar Articulo
+  </button>
+  <button mat-button
+  color='warn'
+  routerLink="/home/nuevaPartida">
+    Ingregar Partida
+  </button>
+  <button mat-button>
+    Listar Partidas
+  </button>
+</mat-toolbar>
+
+
+<div style="padding: 1em">
+
+  <mat-card>
+    <mat-card-title>Agregar nuevas partidas</mat-card-title>
+    <mat-card-content *ngFor="let item of partidas; let i = index"> 
+      <mat-form-field>
+        <input (keyup)="changeCantidad($event, i)" matInput placeholder="Cantidad" required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Articulo</mat-label>
+        <mat-select (selectionChange)="changeArticulo($event, i)">
+          <mat-option *ngFor="let data of articulos" [value]="data.id">
+            {{data.descripcion}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput (dateChange)="changeFecha($event, i)" [matDatepicker]="picker" placeholder="Fecha de ingreso" [value]="item.fechaPartida">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <button mat-button (click)="addPartida()">
+        <mat-icon class="green-icon">add_circle</mat-icon>
+      </button>
+      <button mat-button (click)="deletePartida(item, i)">
+        <mat-icon class="red-icon">delete</mat-icon>
+      </button>
+    </mat-card-content>
+  </mat-card>
+
+
+
+
+
+
+</div>

@@ -12,7 +12,7 @@ import { RouterLink, Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  usuario: string = "suicideboy";
+  usuario: string = "f.mujica";
   pass: string = "12345";
   private _usuario: any;
   private _token: string;
@@ -24,10 +24,6 @@ export class LoginComponent implements OnInit {
 
   logear(usuario: string, pass: string):Observable<any>{
     const url: string = 'http://localhost:8080/oauth/token';
-
-    interface UserPostResponse {
-      success: boolean
-    }
 
     const httpOptions = {
       headers: new HttpHeaders({
