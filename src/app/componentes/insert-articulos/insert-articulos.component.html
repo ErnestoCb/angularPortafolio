@@ -8,14 +8,16 @@
     routerLink="/home/articulos">
     Articulos disponibles
   </button>
-  <button mat-button>
+  <button mat-button
+  routerLink="/home/caducar">
     Caducar Articulo
   </button>
   <button mat-button
   routerLink="/home/nuevaPartida">
     Ingregar Partida
   </button>
-  <button mat-button>
+  <button mat-button
+  routerLink="/home/listarPartida">
     Listar Partidas
   </button>
 </mat-toolbar>
@@ -23,41 +25,41 @@
 <mat-card>
   <mat-card-content>
     <mat-form-field>
-      <input matInput placeholder="Descripcion"><!--el value="" trae el valor de este campo-->
+      <input [(ngModel)]="descripcion" matInput placeholder="Descripcion"><!--el value="" trae el valor de este campo-->
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Componentes">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput placeholder="Contenido">
+      <input [(ngModel)]="componentes" matInput placeholder="Componentes">
     </mat-form-field>
   </mat-card-content>
   <mat-card-content>
     <mat-form-field>
       <mat-label>Tipo</mat-label>
-      <mat-select>
-        <mat-option *ngFor="let item of tipos" [value]="item.value">
+      <mat-select [(ngModel)]="tipo">
+        <mat-option *ngFor="let item of tipos" [value]="item.id">
           {{item.nombre}}
         </mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Fabricante</mat-label>
-      <mat-select>
-        <mat-option *ngFor="let item of fabricantes" [value]="item.value">
+      <mat-select [(ngModel)]="fabricante">
+        <mat-option [value]="">Seleccionar...</mat-option>
+        <mat-option *ngFor="let item of fabricantes" [value]="item.id">
           {{item.nombre}}
         </mat-option>
       </mat-select>
     </mat-form-field>
+
+
   </mat-card-content>
   <mat-card-content>
     <mat-form-field>
-      <input type="number" matInput placeholder="Componentes">
+      <input [(ngModel)]="contenido" matInput placeholder="Contenido">
     </mat-form-field>
     <mat-form-field>
-      <input type="number" matInput placeholder="Contenido">
+      <input type="number" [(ngModel)]="gramaje" matInput placeholder="Gramaje">
     </mat-form-field>
-    <button mat-raised-button color="warn">Agregar Articulo</button>
+    <button mat-raised-button (click)="test()" color="warn">Agregar Articulo</button>
   </mat-card-content>
 
 

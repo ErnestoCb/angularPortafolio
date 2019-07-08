@@ -1,10 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { SesionStoreService } from '../../servicios/sesion-store.service';
 import { SelectsService } from '../../servicios/selects.service';
 import { ApiService } from '../../api.service';
 import { DatePipe } from '@angular/common';
+import { Observable } from 'rxjs';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import { map } from 'rxjs/operators';
+import { catchError, retry } from 'rxjs/operators';
+import { throwError } from 'rxjs';
+import { RouterLink, Router } from '@angular/router';
 
 @Component({
   selector: 'app-nueva-partida',
@@ -26,9 +32,11 @@ export class NuevaPartidaComponent implements OnInit {
 
   constructor(private sessionstore: SesionStoreService, 
     private httpClient: HttpClient, 
-    private selects: SelectsService, 
+    private selects: SelectsService,
+    private snackBar: MatSnackBar, 
     private apiService: ApiService,
-    public datepipe: DatePipe) { }
+    public datepipe: DatePipe,
+    private router: Router) { }
 
   ngOnInit() {
     this.getArticulos();
@@ -53,9 +61,9 @@ export class NuevaPartidaComponent implements OnInit {
   }
 
   deletePartida(item, index){
-    //this.partidas.splice(index, 1);
-    console.log(item);
-    console.log(index);
+    this.partidas.splice(index, 1);
+    //console.log(item);
+    //console.log(index);
   }
 
   changeCantidad(item, index){
@@ -77,6 +85,67 @@ export class NuevaPartidaComponent implements OnInit {
   cambioFecha(fecha: Date){
     let nuevaFecha =this.datepipe.transform(fecha, 'dd/MM/yyyy');
     return nuevaFecha;
+  }
+
+  sendPartidas(json: any):Observable<any>{
+    const url: string = "http://localhost:8080/api/v1/partidas/";
+
+    const httpOptions2 = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': 'Bearer ' + this.sessionstore.token
+      })
+    };
+
+    return this.httpClient.post<any>(url, json, httpOptions2).pipe(
+      catchError((err: HttpErrorResponse)=>{
+        console.log(err);
+
+        
+        if (err.status == 401) {
+          alert("El usuario o contraseña ingresados son incorrectos");
+        } else {
+          alert("Existe un problema al agregar las partidas");
+        }
+        
+        return throwError(err.status);
+      })
+    );
+  }
+
+  sendPaciente(json, id):void{
+
+    this.sendPartidas(json).subscribe(data => {
+      console.log(data);
+
+
+      let stockActual = this.apiService.getArticulosById(id).subscribe(data =>{
+        console.log("articulo qyue traje");
+        console.log(data.stock);
+      });
+
+
+
+      this.router.navigate(['home/listarPartida']);
+    });
+
+  }
+
+  send(){
+    let json:any = {}
+    this.partidas.forEach(element => {
+      json = {
+        "cantidad_llegada": element.cantidadLlegada,
+        "fechaPartida": element.fechaPartida,
+        "articulo": {
+          "id": element.articulo
+        }
+      };
+      console.log(json);
+      this.sendPaciente(json, element.articulo);
+    });
+    this.snackBar.open("Partidas agregadas correctamente", "OK!", { duration: 3000});
+
   }
 
 

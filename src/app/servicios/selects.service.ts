@@ -28,5 +28,18 @@ export class SelectsService {
     return this.httpClient.get(urlLoco,httpOptions2);
   }
 
+  articulos(url:string):Observable<any>{
+    const urlLoco: string = 'http://localhost:8080/api/v1/articulos/' + url;
+  
+    const httpOptions2 = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/x-www-form-urlencoded',
+        'Authorization': this.sessionstore.token
+      })
+    };
+
+    return this.httpClient.get(urlLoco,httpOptions2);
+  }
+
   
 }

@@ -7,7 +7,8 @@
     routerLink="/home/articulos">
     Articulos disponibles
   </button>
-  <button mat-button>
+  <button mat-button
+  routerLink="/home/caducar">
     Caducar Articulo
   </button>
   <button mat-button
@@ -15,7 +16,8 @@
   routerLink="/home/nuevaPartida">
     Ingregar Partida
   </button>
-  <button mat-button>
+  <button mat-button
+  routerLink="/home/listarPartida">
     Listar Partidas
   </button>
 </mat-toolbar>
@@ -49,6 +51,7 @@
         <mat-icon class="red-icon">delete</mat-icon>
       </button>
     </mat-card-content>
+    <button mat-raised-button (click)="send()" color="warn">Agregar las Partidas</button>
   </mat-card>
 
 

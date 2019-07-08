@@ -32,7 +32,8 @@ import { DatosPacienteComponent } from './componentes/datos-paciente/datos-pacie
 import { NuevaPartidaComponent } from './componentes/nueva-partida/nueva-partida.component'
 
 //cambiar las fechas
-import { DatePipe } from '@angular/common'
+import { DatePipe } from '@angular/common';
+import { ListaPartidasComponent } from './componentes/lista-partidas/lista-partidas.component'
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { DatePipe } from '@angular/common'
     UsuariosMedicoComponent,
     UsuariosFarmaceuticoComponent,
     DatosPacienteComponent,
-    NuevaPartidaComponent
+    NuevaPartidaComponent,
+    ListaPartidasComponent
   ],
   imports: [
     BrowserModule,

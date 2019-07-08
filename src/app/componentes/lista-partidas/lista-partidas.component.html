@@ -1,0 +1,59 @@
+<mat-toolbar style="width: 100%">
+    <button mat-button
+    routerLink="/home/nuevoArt">
+    Nuevo Articulo
+    </button>
+  <button mat-button
+    routerLink="/home/articulos">
+    Articulos disponibles
+  </button>
+  <button mat-button
+  routerLink="/home/caducar">
+    Caducar Articulo
+  </button>
+  <button mat-button
+  routerLink="/home/nuevaPartida">
+    Ingregar Partida
+  </button>
+  <button mat-button
+  color='warn'
+  routerLink="/home/listarPartida">
+    Listar Partidas
+  </button>
+</mat-toolbar>
+
+
+<div style="padding: 1em">
+
+    <table mat-table [dataSource]="partidas" class="mat-elevation-z8">
+        
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef> Id. </th>
+          <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="fechaPartida">
+          <th mat-header-cell *matHeaderCellDef> Fecha Partida </th>
+          <td mat-cell *matCellDef="let element"> {{element.fechaPartida}} </td>
+        </ng-container>
+        <ng-container matColumnDef="cantidadLlegada">
+          <th mat-header-cell *matHeaderCellDef> Cantidad Llegada </th>
+          <td mat-cell *matCellDef="let element"> {{element.cantidadLlegada}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="cantidadRestante">
+          <th mat-header-cell *matHeaderCellDef> Cantidad Restante </th>
+          <td mat-cell *matCellDef="let element"> {{element.cantidadRestante}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="descripcion">
+          <th mat-header-cell *matHeaderCellDef> Articulo </th>
+          <td mat-cell *matCellDef="let element"> {{element.articulo.descripcion}} </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+</div>
+
+<br>

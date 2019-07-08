@@ -34,6 +34,11 @@ export class ApiService {
       map(this.extractData));
   }
 
+  getArticulosById(id): Observable<any> {
+    return this.httpClient.get(this.endpoint + 'articulos/' + id).pipe(
+      map(this.extractData));
+  }
+
   addArticulos (articulo): Observable<any> {
     console.log(articulo);
     return this.httpClient.post<any>(this.endpoint + 'articulos', JSON.stringify(articulo), this.httpOptions).pipe(
