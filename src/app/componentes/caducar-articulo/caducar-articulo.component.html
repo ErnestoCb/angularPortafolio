@@ -14,7 +14,7 @@
   </button>
   <button mat-button
   routerLink="/home/caducado">
-    Caducar Articulo
+    Articulos Caducados
   </button>
   <button mat-button
   routerLink="/home/nuevaPartida">
@@ -78,7 +78,15 @@
       <th mat-header-cell *matHeaderCellDef> Caducar </th>
       <td mat-cell *matCellDef=""> 
           <mat-form-field>
-           <input matInput placeholder="Cantidad a caducar">
+            <input matInput placeholder="Cantidad a caducar">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Motivo</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let data of motivos" [value]="data.id">
+                {{data.motivo}}
+              </mat-option>
+            </mat-select>
           </mat-form-field>
           <button style="margin-left: 25px" mat-raised-button (click)="caducar(this)" color="warn"><mat-icon>cancel</mat-icon>Caducar</button>
       </td>

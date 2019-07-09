@@ -1,1 +1,18 @@
-<p>reportes works!</p>
+<mat-toolbar style="width: 100%">
+<button mat-button
+color='warn'
+routerLink="/home/reportes">
+  Reportes
+</button>
+</mat-toolbar>
+
+<mat-card>
+    <mat-card-title>Generar reportes:</mat-card-title>
+    <mat-card-content>
+        <button mat-raised-button color="primary">Stock de articulos</button>
+        <button mat-raised-button color="primary">Stock critico</button>
+        <button mat-raised-button color="primary">Reservas actuales</button>
+        <button mat-raised-button color="primary">Receta por paciente</button>
+        <button mat-raised-button color="primary">Articulos entregados</button>
+    </mat-card-content>
+</mat-card>

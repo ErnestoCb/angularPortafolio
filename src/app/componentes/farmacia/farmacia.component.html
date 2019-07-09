@@ -1,1 +1,53 @@
-<p>farmacia works!</p>
+<mat-toolbar style="width: 100%">
+<button mat-button
+color='warn'
+routerLink="/home/farmacia">
+  Entrega de Medicamentos
+</button>
+</mat-toolbar>
+
+<mat-card>
+  <mat-card-title>Buscar paciente:</mat-card-title>
+  <mat-card-content>
+    <mat-form-field>
+      <input matInput placeholder="Rut del paciente" [(ngModel)]="rut" required>
+    </mat-form-field>
+    <button style="margin-left: 25px" mat-raised-button (click)="getPaciente()" color="warn">Buscar</button>
+  </mat-card-content>
+  <mat-card-subtitle>Paciente: {{nombre}}</mat-card-subtitle>
+</mat-card>
+
+  <div style="padding: 1em" *ngIf="mostrarData">
+
+    <table mat-table [dataSource]="detalles" class="mat-elevation-z8">
+        
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef> Id. </th>
+          <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="articulo">
+          <th mat-header-cell *matHeaderCellDef> Articulo </th>
+          <td mat-cell *matCellDef="let element"> {{element.articulo}} </td>
+        </ng-container>
+        <ng-container matColumnDef="cantidad">
+          <th mat-header-cell *matHeaderCellDef> Cantidad </th>
+          <td mat-cell *matCellDef="let element"> {{element.cantidad}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="entregado">
+          <th mat-header-cell *matHeaderCellDef> Entregado </th>
+          <td mat-cell *matCellDef="let element"> 
+              <mat-checkbox>Entregado</mat-checkbox>  
+          </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <button mat-raised-button (click)="send()" color="primary">Cerrar entrega</button>
+</div>
+
+
+<br>
+

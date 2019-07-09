@@ -125,8 +125,6 @@ export class NuevaPartidaComponent implements OnInit {
       });
 
 
-
-      this.router.navigate(['home/listarPartida']);
     });
 
   }
@@ -145,6 +143,7 @@ export class NuevaPartidaComponent implements OnInit {
       console.log(json);
       this.sendPaciente(json, element.articulo);
     });
+    this.router.navigate(['home/listarPartida']);
     this.snackBar.open("Partidas agregadas correctamente", "OK!", { duration: 3000});
 
   }

@@ -1,11 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { SesionStoreService } from '../../servicios/sesion-store.service';
 import { ApiService } from '../../api.service';
 import { DatePipe } from '@angular/common';
 import { SelectsService } from '../../servicios/selects.service';
 import { Observable } from 'rxjs';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import { map } from 'rxjs/operators';
+import { catchError, retry } from 'rxjs/operators';
+import { throwError } from 'rxjs';
+import { RouterLink, Router } from '@angular/router';
 
 @Component({
   selector: 'app-prescripcion',
@@ -39,6 +44,8 @@ export class PrescripcionComponent implements OnInit {
 
   constructor(private sessionstore: SesionStoreService, private httpClient: HttpClient, private selects: SelectsService,
     public datepipe: DatePipe,
+    private snackBar: MatSnackBar, 
+    private router: Router,
     private apiService: ApiService) { }
 
   ngOnInit() {
@@ -68,7 +75,7 @@ export class PrescripcionComponent implements OnInit {
     const httpOptions2 = {
       headers: new HttpHeaders({
         'Content-Type':  'application/x-www-form-urlencoded',
-        'Authorization': this.sessionstore.token
+        'Authorization': 'Bearer ' + this.sessionstore.token
       })
     };
 
@@ -80,6 +87,67 @@ export class PrescripcionComponent implements OnInit {
 
 
   send(){
+    let json:any = {}
+    /*
+    this.detalles.forEach(element => {
+      json = {
+        "dias": element.dias,
+        "intervalos": element.intervalos,
+        "permanente": element.permanente,
+        "articulo": {
+          "id": element.articulo
+        }
+      };
+      console.log(json);
+      this.sendDetalle(json, element.articulo);
+    });*/
+    this.guardarWeas();
+    console.log(this.detalles);
+    this.snackBar.open("Receta creada correctamente", "OK!", { duration: 3000});
+    this.router.navigate(['home/inicio']);
+    
+  }
+
+  guardarWeas(){
+    sessionStorage.setItem('weas', this.detalles)
+  }
+
+
+
+
+  sendReservas(json: any):Observable<any>{
+    const url: string = "http://localhost:8080/api/v1/reservas/";
+
+    const httpOptions2 = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': 'Bearer ' + this.sessionstore.token
+      })
+    };
+
+    return this.httpClient.post<any>(url, json, httpOptions2).pipe(
+      catchError((err: HttpErrorResponse)=>{
+        console.log(err);
+
+        
+        if (err.status == 401) {
+          alert("El usuario o contraseña ingresados son incorrectos");
+        } else {
+          alert("Existe un problema al crear la receta");
+        }
+        
+        return throwError(err.status);
+      })
+    );
+  }
+
+  sendDetalle(json, id):void{
+
+    this.sendReservas(json).subscribe(data => {
+      console.log(data);
+
+      this.router.navigate(['home/inicio']);
+    });
 
   }
 

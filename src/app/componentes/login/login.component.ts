@@ -12,8 +12,8 @@ import { RouterLink, Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  usuario: string = "f.mujica";
-  pass: string = "12345";
+  usuario: string = "";
+  pass: string = "123456";
   private _usuario: any;
   private _token: string;
 

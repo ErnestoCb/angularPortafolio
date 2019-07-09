@@ -116,7 +116,7 @@ export class PacienteComponent implements OnInit {
 
     this.addPaciente(json).subscribe(data => {
       console.log(data);
-      this.router.navigate(['home/inicio']);
+      this.router.navigate(['home/datospaciente']);
     });
 
   }

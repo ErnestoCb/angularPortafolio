@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 export class SesionStoreService {
   private _usuario: any;
   private _token: string;
+  private _weas: any[];
   constructor() { }
   
   public get user(): any{
