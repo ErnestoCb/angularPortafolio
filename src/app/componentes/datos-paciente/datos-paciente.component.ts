@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { SesionStoreService } from '../../servicios/sesion-store.service';
 import { SelectsService } from '../../servicios/selects.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-datos-paciente',
@@ -19,17 +20,9 @@ export class DatosPacienteComponent implements OnInit {
 
   //
   mostrarData: boolean = false;
-  datosPaciente:any = {
-    nombre: "Ernesto",
-    app: "Cabello",
-    apm: "Venegas",
-    rut: "123123141",
-    telefono: 12345678,
-    nombretutor: "Soy el tutor",
-    rutTutor: "19284784",
-    emailTutor: "asdasda@asda.com",
-  }
+  dataPaciente: any = {};
 
+  rut: string;
   nacionalidad: number = 39;
   region: number = 7;
   comuna: number = 39;
@@ -54,14 +47,40 @@ export class DatosPacienteComponent implements OnInit {
 
 
   getPaciente(){
+    this.traePaciente(this.rut);
     this.mostrarData = !this.mostrarData;
   }
 
 
 
+  traePaciente(rut) {
+    this.getPacienteByRut(rut).subscribe((data: {}) =>{
+      console.log(data);
+      this.dataPaciente = data;
+      
+      setTimeout(() => {
+        let fecha = this.dataPaciente.fechaNacimiento.replace("/","-").replace("/","-");
+        console.log(fecha);
+        let dato = new Date(fecha);
+        this.date = new FormControl(new Date("03-26-1996"));
+        console.log(this.date);
+      }, 500);
+    });
+  }
 
 
+  getPacienteByRut(rut: string):Observable<any>{
+    const urlLoco: string = 'http://localhost:8080/api/v1/pacientes/' + rut;
+  
+    const httpOptions2 = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/x-www-form-urlencoded',
+        'Authorization': this.sessionstore.token
+      })
+    };
 
+    return this.httpClient.get(urlLoco,httpOptions2);
+  }
 
   traigoLosSelectsQLOS() {
     this.selects.webService('previsiones').toPromise().then(data =>{ 

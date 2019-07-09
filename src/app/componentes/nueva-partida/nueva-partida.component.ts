@@ -135,7 +135,8 @@ export class NuevaPartidaComponent implements OnInit {
     let json:any = {}
     this.partidas.forEach(element => {
       json = {
-        "cantidad_llegada": element.cantidadLlegada,
+        "cantidadLlegada": element.cantidadLlegada,
+        "cantidadRestante": element.cantidadLlegada,
         "fechaPartida": element.fechaPartida,
         "articulo": {
           "id": element.articulo

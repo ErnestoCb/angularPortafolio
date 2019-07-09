@@ -11,7 +11,7 @@ import { PacienteComponent } from './componentes/paciente/paciente.component';
 import { PerfilComponent } from './componentes/perfil/perfil.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatFormFieldModule, MatSnackBarModule, MatInputModule, MatOptionModule, MatSelectModule, MatNativeDateModule, MatDatepickerModule, MatCheckboxModule, MatCardModule,MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatTableModule, MAT_DATE_LOCALE } from '@angular/material';
+import { MatFormFieldModule, MatSlideToggleModule, MatSnackBarModule, MatInputModule, MatOptionModule, MatSelectModule, MatNativeDateModule, MatDatepickerModule, MatCheckboxModule, MatCardModule,MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatTableModule, MAT_DATE_LOCALE } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 
 //angular material y las opciones de form para los mismo
@@ -33,7 +33,10 @@ import { NuevaPartidaComponent } from './componentes/nueva-partida/nueva-partida
 
 //cambiar las fechas
 import { DatePipe } from '@angular/common';
-import { ListaPartidasComponent } from './componentes/lista-partidas/lista-partidas.component'
+import { ListaPartidasComponent } from './componentes/lista-partidas/lista-partidas.component';
+import { ReportesComponent } from './componentes/reportes/reportes.component';
+import { FarmaciaComponent } from './componentes/farmacia/farmacia.component';
+import { CaducadoComponent } from './componentes/caducado/caducado.component'
 
 @NgModule({
   declarations: [
@@ -53,7 +56,10 @@ import { ListaPartidasComponent } from './componentes/lista-partidas/lista-parti
     UsuariosFarmaceuticoComponent,
     DatosPacienteComponent,
     NuevaPartidaComponent,
-    ListaPartidasComponent
+    ListaPartidasComponent,
+    ReportesComponent,
+    FarmaciaComponent,
+    CaducadoComponent
   ],
   imports: [
     BrowserModule,
@@ -75,8 +81,10 @@ import { ListaPartidasComponent } from './componentes/lista-partidas/lista-parti
     MatSelectModule,
     MatOptionModule,
     MatDatepickerModule,
+    MatCheckboxModule,
     MatNativeDateModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatSlideToggleModule
   ],
   providers: [SelectsService,
     {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},

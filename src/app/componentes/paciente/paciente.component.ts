@@ -80,7 +80,7 @@ export class PacienteComponent implements OnInit {
       "rut": this.rut,
       "fechaNacimiento": this.date,
       "numeroCelular": this.numero,
-      "telefonoFijo": "99999999",
+      "telefonoFijo": "99999998",
       "rutTutor": this.ruttutor,
       "nombreTutor": this.nombretutor,
       "emailTutor": this.email.value,

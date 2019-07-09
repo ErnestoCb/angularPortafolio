@@ -19,9 +19,8 @@
       <a mat-list-item routerLink="nuevoArt">Articulos</a>
       <a mat-list-item routerLink="prescripcion">Prescripción</a>
       <a mat-list-item routerLink="pacientes">Pacientes</a>
-      <a mat-list-item routerLink="">Personal</a>
-      <a mat-list-item routerLink="#">Farmacia</a>
-      <a mat-list-item routerLink="#">Reportes</a>
+      <a mat-list-item routerLink="farmacia">Farmacia</a>
+      <a mat-list-item routerLink="reportes">Reportes</a>
       <a mat-list-item routerLink="usuarioMedico">Usuarios</a>
     </mat-nav-list>
   </mat-sidenav>
@@ -45,7 +44,7 @@
         type="button"
         aria-label="Toggle sidenav"
         mat-icon-button
-        (click)="drawer.toggle()">
+        routerLink="/login">
         <mat-icon aria-label="Side nav toggle icon">power_settings_new</mat-icon>
       </button>
     </mat-toolbar>

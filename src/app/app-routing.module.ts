@@ -16,6 +16,9 @@ import { UsuariosFarmaceuticoComponent } from './componentes/usuarios-farmaceuti
 import { DatosPacienteComponent } from './componentes/datos-paciente/datos-paciente.component';
 import { NuevaPartidaComponent } from './componentes/nueva-partida/nueva-partida.component';
 import { ListaPartidasComponent } from './componentes/lista-partidas/lista-partidas.component';
+import { ReportesComponent } from './componentes/reportes/reportes.component';
+import { FarmaciaComponent } from './componentes/farmacia/farmacia.component';
+import { CaducadoComponent } from './componentes/caducado/caducado.component';
 
 
 const routes: Routes = [
@@ -34,6 +37,9 @@ const routes: Routes = [
       { path: 'nuevoArt', component: InsertArticulosComponent },
       { path: 'nuevaPartida', component: NuevaPartidaComponent },
       { path: 'caducar', component: CaducarArticuloComponent },
+      { path: 'reportes', component: ReportesComponent },
+      { path: 'farmacia', component: FarmaciaComponent },
+      { path: 'caducado', component: CaducadoComponent },
       { path: 'listarPartida', component: ListaPartidasComponent },
       { path: 'prescripcion', component: PrescripcionComponent },
       { path: 'usuarioMedico', component: UsuariosMedicoComponent },

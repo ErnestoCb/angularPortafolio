@@ -14,48 +14,49 @@ routerLink="/home/datospaciente">
   <mat-card-title>Buscar paciente:</mat-card-title>
   <mat-card-content>
     <mat-form-field>
-      <input matInput placeholder="Rut del paciente" required>
+      <input matInput placeholder="Rut del paciente" [(ngModel)]="rut" required>
     </mat-form-field>
     <button style="margin-left: 25px" mat-raised-button (click)="getPaciente()" color="warn">Buscar</button>
+    <button style="margin-left: 550px" *ngIf="mostrarData" mat-raised-button><mat-icon>edit</mat-icon>Editar Paciente</button>
   </mat-card-content>
 
   <mat-card-content *ngIf="mostrarData">
     <mat-card-title>Datos del Paciente</mat-card-title>
     <mat-card-content>
       <mat-form-field>
-        <input matInput placeholder="Nombre" [(ngModel)]="datosPaciente.nombre" required><!--el value="" trae el valor de este campo-->
+        <input matInput placeholder="Nombre" [disabled]='true' [(ngModel)]="dataPaciente.nombre" required><!--el value="" trae el valor de este campo-->
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Apellido Paterno" [(ngModel)]="datosPaciente.app" required>
+        <input matInput placeholder="Apellido Paterno" [disabled]='true' [(ngModel)]="dataPaciente.apellidoPaterno" required>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Apellido Materno" [(ngModel)]="datosPaciente.apm" required>
+        <input matInput placeholder="Apellido Materno" [disabled]='true' [(ngModel)]="dataPaciente.apellidoMaterno" required>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Rut" [(ngModel)]="datosPaciente.rut" required>
+        <input matInput placeholder="Rut" [disabled]='true' [(ngModel)]="dataPaciente.rut" required>
       </mat-form-field>
       <mat-form-field>
-        <input type="number" matInput placeholder="Numero de telefono" [(ngModel)]="datosPaciente.telefono" required>
+        <input type="number" matInput placeholder="Numero de telefono" [disabled]='true' [(ngModel)]="dataPaciente.numeroCelular" required>
       </mat-form-field>
     </mat-card-content>
     <mat-card-content>
         
       <mat-card-subtitle>Datos del Tutor</mat-card-subtitle>
       <mat-form-field>
-        <input matInput placeholder="Rut Tutor" [(ngModel)]="datosPaciente.rutTutor">
+        <input matInput placeholder="Rut Tutor" [disabled]='true' [(ngModel)]="dataPaciente.rutTutor">
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Nombre Tutor" [(ngModel)]="datosPaciente.nombretutor">
+        <input matInput placeholder="Nombre Tutor" [disabled]='true' [(ngModel)]="dataPaciente.nombreTutor">
       </mat-form-field>
       <mat-form-field>
-      <input matInput placeholder="Email / Tutor"  [(ngModel)]="datosPaciente.emailTutor">
+      <input matInput placeholder="Email / Tutor" [disabled]='true'  [(ngModel)]="dataPaciente.emailTutor">
     </mat-form-field>
     </mat-card-content>
     <mat-card-content>
       <mat-card-subtitle>Datos adicionales</mat-card-subtitle>
       <mat-form-field>
         <mat-label>Region</mat-label>
-        <mat-select [(ngModel)]="region">
+        <mat-select [(ngModel)]="dataPaciente.region.id" [disabled]='true'>
           <mat-option *ngFor="let data of regiones" [value]="data.id">
             {{data.nombre}}
           </mat-option>
@@ -63,7 +64,7 @@ routerLink="/home/datospaciente">
       </mat-form-field>
       <mat-form-field>
         <mat-label>Comuna</mat-label>
-        <mat-select [(ngModel)]="comuna">
+        <mat-select [(ngModel)]="dataPaciente.comuna.id" [disabled]='true'>
           <mat-option *ngFor="let data of comunas" [value]="data.id">
             {{data.nombre}}
           </mat-option>
@@ -71,7 +72,7 @@ routerLink="/home/datospaciente">
       </mat-form-field>
       <mat-form-field>
         <mat-label>Nacionalidad</mat-label>
-        <mat-select [(ngModel)]="nacionalidad">
+        <mat-select [(ngModel)]="dataPaciente.nacionalidad.id" [disabled]='true'>
           <mat-option *ngFor="let data of nacionalidades" [value]="data.id">
             {{data.pais}}
           </mat-option>
@@ -79,7 +80,7 @@ routerLink="/home/datospaciente">
       </mat-form-field>
       <mat-form-field>
         <mat-label>Carnet</mat-label>
-        <mat-select [(ngModel)]="carn">
+        <mat-select [(ngModel)]="dataPaciente.carnet.id" [disabled]='true'>
           <mat-option *ngFor="let dato of carnet" [value]="dato.id">
             {{dato.nombre}}
           </mat-option>
@@ -89,7 +90,7 @@ routerLink="/home/datospaciente">
     <mat-card-content>
       <mat-form-field>
         <mat-label>Prevision</mat-label>
-        <mat-select [(ngModel)]="prevision">
+        <mat-select [(ngModel)]="dataPaciente.prevision.id" [disabled]='true'>
           <mat-option *ngFor="let data of previsiones" [value]="data.id">
             {{data.nombre}}
           </mat-option>
@@ -97,7 +98,7 @@ routerLink="/home/datospaciente">
       </mat-form-field>
       <mat-form-field>
         <mat-label>Sexo</mat-label>
-        <mat-select [(ngModel)]="sexo">
+        <mat-select [(ngModel)]="dataPaciente.sexo.id" [disabled]='true'>
           <mat-option *ngFor="let data of sexos" [value]="data.id">
             {{data.nombre}}
           </mat-option>
@@ -106,7 +107,7 @@ routerLink="/home/datospaciente">
       <mat-form-field>
         <input matInput [matDatepicker]="picker" placeholder="Fecha de Nacimiento" [formControl]="date">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
+        <mat-datepicker [disabled]='true' #picker></mat-datepicker>
       </mat-form-field>
   
     </mat-card-content>

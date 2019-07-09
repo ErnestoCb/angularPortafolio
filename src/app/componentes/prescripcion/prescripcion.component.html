@@ -1,5 +1,63 @@
+<mat-toolbar style="width: 100%">
+<button mat-button
+color='warn'
+routerLink="/home/prescripcion">
+  Prescripcion
+</button>
+</mat-toolbar>
+
+
 <mat-card>
+  <mat-card-title>Buscar paciente:</mat-card-title>
   <mat-card-content>
-    <button mat-raised-button color="primary">PDF</button>
+    <mat-form-field>
+      <input matInput placeholder="Rut del paciente" [(ngModel)]="rut" required>
+    </mat-form-field>
+    <button style="margin-left: 25px" mat-raised-button (click)="getPaciente()" color="warn">Buscar</button>
   </mat-card-content>
+
+  <mat-card-subtitle>Paciente: {{nombre}}</mat-card-subtitle>
+  <mat-slide-toggle (change)="mostrarTrata($event)" style="margin-left: 750px">Tratamiento Largo</mat-slide-toggle>
+  <mat-card-content *ngFor="let item of detalles; let i = index"> 
+    <mat-form-field>
+      <input (keyup)="changeCantidad($event, i)" matInput placeholder="Cantidad" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input (keyup)="changeCantidad($event, i)" matInput placeholder="Intervalos" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input (keyup)="changeCantidad($event, i)" matInput placeholder="Dias" required>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Articulo</mat-label>
+      <mat-select (selectionChange)="changeArticulo($event, i)">
+        <mat-option *ngFor="let data of articulos" [value]="data.id">
+          {{data.descripcion}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-checkbox (change)="changePermanente($event, i)" [(ngModel)]="item.permanente">Permanente</mat-checkbox>
+    <button mat-button (click)="addPartida()">
+      <mat-icon class="green-icon">add_circle</mat-icon>
+    </button>
+    <button mat-button (click)="deletePartida(item, i)">
+      <mat-icon class="red-icon">delete</mat-icon>
+    </button>
+  </mat-card-content>
+
+  <mat-card-content *ngIf="mostrarTratamiento">
+    <mat-form-field>
+      <input matInput (dateChange)="changeFecha1($event)" [matDatepicker]="picker" placeholder="Fecha de ultima dotacion">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker [disabled]='true' #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput (dateChange)="changeFecha2($event)" [matDatepicker]="picker2" placeholder="Fecha de siguiente dotacion">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-checkbox (change)="changeEvaluacion($event)">Requiere nueva Evaluacion</mat-checkbox>
+  </mat-card-content>
+
+  <button mat-raised-button (click)="send()" color="primary">Crear Receta</button>
 </mat-card>
